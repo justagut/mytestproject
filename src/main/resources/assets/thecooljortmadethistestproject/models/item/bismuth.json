@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thecooljortmadethistestproject:textures/item/bismuth"
+    "layer0": "thecooljortmadethistestproject:item/bismuth"
   }
 }

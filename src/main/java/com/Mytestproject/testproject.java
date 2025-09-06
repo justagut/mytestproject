@@ -1,5 +1,6 @@
 package com.Mytestproject;
 
+import com.Mytestproject.block.ModBlocks;
 import com.Mytestproject.somerandomitem.moditems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -40,6 +41,7 @@ public class testproject {
 
 
         moditems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -55,6 +57,10 @@ public class testproject {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(moditems.BISMUTH);
+            event.accept(moditems.RAW_BISMUTH);
+        }
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(ModBlocks.BISMUTH_BLOCK);
         }
     }
 
