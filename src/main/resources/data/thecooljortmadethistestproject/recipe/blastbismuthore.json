@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "ingredient": {
+    "id": "thecooljortmadethistestproject:bismuth_ore"
+  },
+  "result": {
+    "id": "thecooljortmadethistestproject:bismuth"
+  }
+}
