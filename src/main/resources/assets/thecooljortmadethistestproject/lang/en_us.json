@@ -3,5 +3,8 @@
   "item.thecooljortmadethistestproject.raw_bismuth": "Raw Bismuth",
 
   "block.thecooljortmadethistestproject.bismuth_block": "Block of Bismuth",
-  "block.thecooljortmadethistestproject.bismuth_ore": "Bismuth Ore"
+  "block.thecooljortmadethistestproject.bismuth_ore": "Bismuth Ore",
+
+  "creativetab.thecooljortmadethistestproject.bismuth_items": "Bismuth Items",
+  "creativetab.thecooljortmadethistestproject.bismuth_blocks": "Bismuth Blocks"
 }

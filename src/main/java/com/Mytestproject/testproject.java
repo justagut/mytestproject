@@ -1,6 +1,7 @@
 package com.Mytestproject;
 
 import com.Mytestproject.block.ModBlocks;
+import com.Mytestproject.somerandomitem.ModCreativeModeTabs;
 import com.Mytestproject.somerandomitem.moditems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -38,6 +39,8 @@ public class testproject {
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
+
+        ModCreativeModeTabs.register(modEventBus);
 
 
         moditems.register(modEventBus);
