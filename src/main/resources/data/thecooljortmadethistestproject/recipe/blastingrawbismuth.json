@@ -5,7 +5,7 @@
   "experience": 0.25,
   "group": "bismuth",
   "ingredient": {
-    "id": "thecooljortmadethistestproject:bismuth_ore"
+    "item": "thecooljortmadethistestproject:raw_bismuth"
   },
   "result": {
     "count": "1",
