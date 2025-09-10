@@ -1,7 +1,3 @@
-jort is nog raarder
-===
-jort is nog raarder want hij heeft jefta is raar aan de readme toegevoegd
-
 
 jefta is zeer raar
 =====
