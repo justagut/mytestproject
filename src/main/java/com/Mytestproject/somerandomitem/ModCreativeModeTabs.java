@@ -24,6 +24,8 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(moditems.BISMUTH);
                         output.accept(moditems.RAW_BISMUTH);
+                        output.accept(moditems.BRICKIFIER);
+                        output.accept(moditems.LUCKY_BLOCK_OPENER);
                     })
                     .build());
 
@@ -35,6 +37,8 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.BISMUTH_BLOCK);
                         output.accept(ModBlocks.BISMUTH_ORE);
+                        output.accept(ModBlocks.BISMUTH_DEEPSLATE_ORE);
+                        output.accept(ModBlocks.LUCKY_BLOCK);
                     })
                     .build());
 

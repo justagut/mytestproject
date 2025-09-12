@@ -1,5 +1,6 @@
 package com.Mytestproject.somerandomitem;
 
+import com.Mytestproject.somerandomitem.custom.brickifier;
 import com.Mytestproject.testproject;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -13,6 +14,12 @@ public class moditems {
             ("bismuth", ()-> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RAW_BISMUTH = ITEMS.register
             ("raw_bismuth", ()-> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BRICKIFIER = ITEMS.register
+            ("brickifier", ()-> new brickifier(new Item.Properties().durability(32)));
+    public static final DeferredItem<Item> LUCKY_BLOCK_OPENER = ITEMS.register
+            ("lucky_block_opener", ()-> new lucky_block_opener(new Item.Properties().durability(8)));
+
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
