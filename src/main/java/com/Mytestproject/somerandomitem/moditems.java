@@ -1,6 +1,7 @@
 package com.Mytestproject.somerandomitem;
 
 import com.Mytestproject.somerandomitem.custom.brickifier;
+import com.Mytestproject.somerandomitem.custom.lucky_block_opener;
 import com.Mytestproject.testproject;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;

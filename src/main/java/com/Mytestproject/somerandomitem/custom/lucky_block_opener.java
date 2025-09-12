@@ -14,14 +14,6 @@ import net.minecraft.world.level.block.Blocks;
 import java.util.Map;
 
 public class lucky_block_opener extends Item{
-    private static final Map<Block,Block> BRICK_MAP =
-            Map.of(
-                    Blocks.STONE, Blocks.STONE_BRICKS,
-                    Blocks.END_STONE, Blocks.END_STONE_BRICKS,
-                    Blocks.DEEPSLATE, Blocks.DEEPSLATE_BRICKS,
-                    Blocks.DIRT, Blocks.DIAMOND_BLOCK
-
-            );
     public lucky_block_opener(Properties properties) {
         super(properties);
     }
@@ -32,7 +24,8 @@ public class lucky_block_opener extends Item{
         Block clickedBlock = level.getBlockState(context.getClickedPos()).getBlock();
 
         if (!level.isClientSide()){
-            level.setBlockAndUpdate(context.getClickedPos(),BRICK_MAP.get(clickedBlock).defaultBlockState());
+            level.setBlockAndUpdate(context.getClickedPos(),Blocks.TNT.defaultBlockState());
+            level.setBlockAndUpdate(context.getClickedPos().above(),Blocks.FIRE.defaultBlockState());
             context.getItemInHand().hurtAndBreak
                     (1,((ServerLevel) level), context.getPlayer(),
                             item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
