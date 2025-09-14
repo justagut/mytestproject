@@ -1,5 +1,6 @@
 package com.Mytestproject.somerandomitem.custom;
 
+import com.Mytestproject.block.ModBlocks;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -23,9 +24,37 @@ public class lucky_block_opener extends Item{
         Level level = context.getLevel();
         Block clickedBlock = level.getBlockState(context.getClickedPos()).getBlock();
 
-        if (!level.isClientSide()){
-            level.setBlockAndUpdate(context.getClickedPos(),Blocks.TNT.defaultBlockState());
-            level.setBlockAndUpdate(context.getClickedPos().above(),Blocks.FIRE.defaultBlockState());
+        if (!level.isClientSide() && clickedBlock == ModBlocks.LUCKY_BLOCK.get()){
+            double Random = Math.floor(Math.random()* 8 + 1);
+            switch((int)Random){
+                case 1: level.setBlockAndUpdate(context.getClickedPos(),Blocks.TNT.defaultBlockState());
+                    level.setBlockAndUpdate(context.getClickedPos().above(),Blocks.FIRE.defaultBlockState());
+                    break;
+                case 2:    level.setBlockAndUpdate(context.getClickedPos(),Blocks.DIAMOND_BLOCK.defaultBlockState());
+                    break;
+                case 3: level.setBlockAndUpdate(context.getClickedPos(), ModBlocks.BISMUTH_ORE.get().defaultBlockState());
+                break;
+                case 4: level.setBlockAndUpdate(context.getClickedPos(),Blocks.BEACON.defaultBlockState());
+                break;
+                case 5: level.setBlockAndUpdate(context.getClickedPos(),Blocks.BEDROCK.defaultBlockState());
+                break;
+                case 6: level.setBlockAndUpdate(context.getClickedPos(),Blocks.TNT.defaultBlockState());
+                    level.setBlockAndUpdate(context.getClickedPos().above(),Blocks.FIRE.defaultBlockState());
+                    break;
+                case 7: level.setBlockAndUpdate(context.getClickedPos(),Blocks.TNT.defaultBlockState());
+                    level.setBlockAndUpdate(context.getClickedPos().above(),Blocks.FIRE.defaultBlockState());
+                    break;
+                case 8: level.setBlockAndUpdate(context.getClickedPos(),Blocks.TNT.defaultBlockState());
+                    level.setBlockAndUpdate(context.getClickedPos().above(),Blocks.FIRE.defaultBlockState());
+                    break;
+                case 9: level.setBlockAndUpdate(context.getClickedPos(),Blocks.TNT.defaultBlockState());
+                    level.setBlockAndUpdate(context.getClickedPos().above(),Blocks.FIRE.defaultBlockState());
+                    break;
+
+            }
+
+
+
             context.getItemInHand().hurtAndBreak
                     (1,((ServerLevel) level), context.getPlayer(),
                             item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
