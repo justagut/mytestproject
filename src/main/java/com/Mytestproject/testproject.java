@@ -1,10 +1,15 @@
 package com.Mytestproject;
 //hoi
 import com.Mytestproject.block.ModBlocks;
+import com.Mytestproject.loopontick.ontick;
 import com.Mytestproject.somerandomitem.ModCreativeModeTabs;
 import com.Mytestproject.somerandomitem.moditems;
-import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -25,17 +30,19 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(testproject.MODID)
 public class testproject {
+
     // Define mod id in a common place for everything to reference
     public static final String MODID = "thecooljortmadethistestproject";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
+
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public testproject(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        // Register ourselves for server and other game events we are interested in. hihi
+        // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
@@ -44,6 +51,7 @@ public class testproject {
 
 
         moditems.register(modEventBus);
+        ontick.register(modEventBus);
         ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
@@ -58,11 +66,11 @@ public class testproject {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(moditems.BISMUTH);
             event.accept(moditems.RAW_BISMUTH);
         }
-        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModBlocks.BISMUTH_BLOCK);
             event.accept(ModBlocks.BISMUTH_ORE);
         }
@@ -71,6 +79,7 @@ public class testproject {
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -80,4 +89,6 @@ public class testproject {
         static void onClientSetup(FMLClientSetupEvent event) {
         }
     }
+
+
 }
