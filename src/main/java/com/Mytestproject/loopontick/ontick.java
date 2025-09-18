@@ -24,8 +24,10 @@ public class ontick {
     public static void serverTick(ServerTickEvent.Pre event){
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.getLevel(Level.OVERWORLD);
-        int count = overworld.players().size();
-        System.out.println("Players in Overworld: " + count);
+        int count;
+        for (count = 0; count < overworld.players().size();count++){
+            System.out.println(count + "is de count");
+        }
 
     }
     @SubscribeEvent
