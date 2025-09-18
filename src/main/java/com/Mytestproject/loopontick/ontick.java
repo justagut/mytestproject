@@ -24,10 +24,21 @@ public class ontick {
     public static void serverTick(ServerTickEvent.Pre event){
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.getLevel(Level.OVERWORLD);
+        int[] alrdonechunksx;
+        int[] alrdonechunksy;
+
+
         int count;
-        for (count = 0; count < overworld.players().size();count++){
-            System.out.println(count + "is de count");
+        for (count = 0;count < overworld.players().size();count++){
+
+            int playerx = overworld.players().get(count).chunkPosition().x;
+            int playery = overworld.players().get(count).chunkPosition().z;
+
+
+
         }
+
+
 
     }
     @SubscribeEvent
