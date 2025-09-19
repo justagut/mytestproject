@@ -38,6 +38,7 @@ public class ontick {
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.getLevel(Level.OVERWORLD);
         List<String> alrdonechunks = new ArrayList<>();
+
         alrdonechunks.add("");
 
 
