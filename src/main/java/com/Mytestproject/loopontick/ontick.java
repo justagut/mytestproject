@@ -13,7 +13,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
+
+import java.util.List;
 
 import static net.minecraft.commands.arguments.EntityArgument.players;
 
@@ -21,18 +24,42 @@ import static net.minecraft.commands.arguments.EntityArgument.players;
 public class ontick {
 
     @SubscribeEvent
+    public static void onServerStarted(ServerStartingEvent event){
+        System.out.println("started");
+        System.out.println("started");
+        System.out.println("started");
+
+
+    }
+
+    @SubscribeEvent
     public static void serverTick(ServerTickEvent.Pre event){
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.getLevel(Level.OVERWORLD);
-        int[] alrdonechunksx;
-        int[] alrdonechunksy;
+        List<String> alrdonechunks = List.of("");
 
 
+        String hoi = null;
+        try{
         int count;
         for (count = 0;count < overworld.players().size();count++){
 
             int playerx = overworld.players().get(count).chunkPosition().x;
             int playery = overworld.players().get(count).chunkPosition().z;
+            if (!alrdonechunks.contains(playerx + "," + playery)) {
+                alrdonechunks.add(playerx + "," + playery);
+                System.out.println(playerx + "," + playery);
+
+
+                for (int i = 0; i < alrdonechunks.size(); i++) {
+                    hoi += alrdonechunks.get(i);
+                }}
+            }}catch(Exception error){
+            System.out.println(error);
+        }
+
+                System.out.println(hoi);
+
 
 
 
@@ -40,7 +67,7 @@ public class ontick {
 
 
 
-    }
+
     @SubscribeEvent
     public static void livingDamage(LivingDamageEvent.Pre event) {
         if (event.getSource().getDirectEntity() instanceof Player player) {
