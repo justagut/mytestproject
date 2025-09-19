@@ -23,6 +23,8 @@ import static net.minecraft.commands.arguments.EntityArgument.players;
 
 @EventBusSubscriber(modid = testproject.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ontick {
+    public static List<String> alrdonechunks = new ArrayList<>(List.of(""));
+    public static String hoi = "";
 
     @SubscribeEvent
     public static void onServerStarted(ServerStartingEvent event){
@@ -37,13 +39,10 @@ public class ontick {
     public static void serverTick(ServerTickEvent.Pre event){
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.getLevel(Level.OVERWORLD);
-        List<String> alrdonechunks = new ArrayList<>();
-
-        alrdonechunks.add("");
 
 
-        String hoi = "";
-        try{
+
+
         int count;
         for (count = 0;count < overworld.players().size();count++){
 
@@ -53,13 +52,11 @@ public class ontick {
                 alrdonechunks.add(playerx + "," + playery);
                 System.out.println(playerx + "," + playery);
 
-
+                hoi = "";
                 for (int i = 0; i < alrdonechunks.size(); i++) {
                     hoi += alrdonechunks.get(i);
                 }}
-            }}catch(Exception error){
-            System.out.println(error);
-        }
+            }
 
                 System.out.println(hoi);
 
