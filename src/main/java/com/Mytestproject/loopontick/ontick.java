@@ -16,6 +16,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.minecraft.commands.arguments.EntityArgument.players;
@@ -36,10 +37,11 @@ public class ontick {
     public static void serverTick(ServerTickEvent.Pre event){
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.getLevel(Level.OVERWORLD);
-        List<String> alrdonechunks = List.of("");
+        List<String> alrdonechunks = new ArrayList<>();
+        alrdonechunks.add("");
 
 
-        String hoi = null;
+        String hoi = "";
         try{
         int count;
         for (count = 0;count < overworld.players().size();count++){
