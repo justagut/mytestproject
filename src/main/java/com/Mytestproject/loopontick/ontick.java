@@ -1,13 +1,16 @@
 package com.Mytestproject.loopontick;
 
+import com.Mytestproject.block.ModBlocks;
 import com.Mytestproject.testproject;
 import com.sun.jna.platform.win32.COM.TypeLibUtil;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.commands.SetBlockCommand;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -24,7 +27,6 @@ import static net.minecraft.commands.arguments.EntityArgument.players;
 @EventBusSubscriber(modid = testproject.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ontick {
     public static List<String> alrdonechunks = new ArrayList<>(List.of(""));
-    public static String hoi = "";
 
     @SubscribeEvent
     public static void onServerStarted(ServerStartingEvent event){
@@ -46,19 +48,22 @@ public class ontick {
         int count;
         for (count = 0;count < overworld.players().size();count++){
 
-            int playerx = overworld.players().get(count).chunkPosition().x;
-            int playery = overworld.players().get(count).chunkPosition().z;
-            if (!alrdonechunks.contains(playerx + "," + playery)) {
-                alrdonechunks.add(playerx + "," + playery);
-                System.out.println(playerx + "," + playery);
-
-                hoi = "";
-                for (int i = 0; i < alrdonechunks.size(); i++) {
-                    hoi += alrdonechunks.get(i);
-                }}
+            int playerx = overworld.players().get(count).chunkPosition().x * 16;
+            int playerz = overworld.players().get(count).chunkPosition().z * 16;
+            if (!alrdonechunks.contains(playerx + "," + playerz)) {
+                alrdonechunks.add(playerx + "," + playerz);
+                for (int i = (int)(Math.random() * 6);i < 5;i++){
+                BlockPos oregenpos = new BlockPos(playerx + (int)(Math.random() * 17) - 8,(int)(Math.random() * 8) - 63,playerz + (int)(Math.random() * 17));
+                if (overworld.getBlockState(oregenpos).getBlock() == Blocks.DEEPSLATE)
+                {
+                    overworld.setBlockAndUpdate(oregenpos,ModBlocks.BISMUTH_DEEPSLATE_ORE.get().defaultBlockState());
+                    System.out.println(oregenpos);
+                }
+                }
+                }
             }
 
-                System.out.println(hoi);
+
 
 
 
