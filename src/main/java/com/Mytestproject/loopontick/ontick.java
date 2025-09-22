@@ -73,6 +73,4 @@ public class ontick {
             player.sendSystemMessage(Component.literal("hoi"));
         }
     }
-
-
 }
