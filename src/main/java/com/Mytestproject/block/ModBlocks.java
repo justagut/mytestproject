@@ -1,5 +1,6 @@
 package com.Mytestproject.block;
 
+import com.Mytestproject.block.custom.magicalia;
 import com.Mytestproject.somerandomitem.moditems;
 import com.Mytestproject.testproject;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -33,6 +34,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> LUCKY_BLOCK = registerBlock("lucky_block",
             ()-> new DropExperienceBlock(UniformInt.of(16,24),  BlockBehaviour.Properties.of()
                     .strength(1f).sound(SoundType.AMETHYST).explosionResistance(1000f)));
+
+    public static final DeferredBlock<Block> MAGICALIA = registerBlock("magicalia",
+                    ()-> new magicalia(BlockBehaviour.Properties.of().requiresCorrectToolForDrops()
+                            .strength(1f).sound(SoundType.AMETHYST).explosionResistance(1000f)));
+
 
 
     private static<T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
